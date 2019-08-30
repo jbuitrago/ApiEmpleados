@@ -1,19 +1,23 @@
-#API Empleados
+### API Empleados
+ 
+## Backend
 
-#Backend
 NodeJs
 Express
 
-#Instalacion
+## Instalacion
+
 npm install
 
-#Ejecucion
+## Ejecucion
+
 npm start
 
 http://localhost:8000
 
 
-#Endpoints
+## Endpoints
+
 http://localhost:8000/api/employees
 http://localhost:8000/api/offices
 http://localhost:8000/api/departments
@@ -24,6 +28,7 @@ http://localhost:8000/api/departments/:id
 
 http://localhost:8000/api/employees?p=1&cant=4
 
-#POSTMAN
+## POSTMAN
+
 Empleados.postman_collection.json
 
