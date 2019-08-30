@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/employees?rel=manager&rel=office&rel=departament.superdepartament",
+					"raw": "http://localhost:8000/api/employees?rel=manager&rel=office&rel=department.superdepartment&p=3&cant=5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -32,7 +32,15 @@
 						},
 						{
 							"key": "rel",
-							"value": "departament.superdepartament"
+							"value": "department.superdepartment"
+						},
+						{
+							"key": "p",
+							"value": "3"
+						},
+						{
+							"key": "cant",
+							"value": "5"
 						}
 					]
 				}
@@ -45,7 +53,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/employees/1?id=1",
+					"raw": "http://localhost:8000/api/employees/1?id=1&rel=manager&rel=office",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -60,6 +68,14 @@
 						{
 							"key": "id",
 							"value": "1"
+						},
+						{
+							"key": "rel",
+							"value": "manager"
+						},
+						{
+							"key": "rel",
+							"value": "office"
 						}
 					]
 				}
@@ -72,7 +88,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/departments?p=2&cant=3",
+					"raw": "http://localhost:8000/api/depart",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -80,17 +96,7 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"departments"
-					],
-					"query": [
-						{
-							"key": "p",
-							"value": "2"
-						},
-						{
-							"key": "cant",
-							"value": "3"
-						}
+						"depart"
 					]
 				}
 			},
@@ -102,7 +108,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/offices",
+					"raw": "http://localhost:8000/api/offices?p=2&cant=3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -111,6 +117,16 @@
 					"path": [
 						"api",
 						"offices"
+					],
+					"query": [
+						{
+							"key": "p",
+							"value": "2"
+						},
+						{
+							"key": "cant",
+							"value": "3"
+						}
 					]
 				}
 			},
