@@ -17,8 +17,6 @@ router.get('/employees', (req, res) => {
     //Rel
     //Relaciones
     join =getRelation(req,table);
-
-
     join=join.join("");
     sql = sql + join  + where + limit;
     let params = [];
@@ -51,10 +49,17 @@ router.get('/employees', (req, res) => {
 
 //GET /employees/<id>
 router.get('/employees/:id', (req, res) => {
-
-    var sql = "select * from employee  where id = ?"
+   
     var params = [req.params.id]
-
+    var table = "employee";
+    var sql = "select * from " + table ;
+     var join = " ";
+    var where = "  where "+ table +".id = ?";
+ 
+    //Relaciones
+    join =getRelation(req,table);
+    join=join.join("");
+    sql = sql + join  + where ;
     db.get(sql, params, (err, row) => {
         if (err) {
             res.status(400).json({ "error": err.message });
