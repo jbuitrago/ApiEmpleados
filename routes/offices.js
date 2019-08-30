@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../database.js")
-var getLimitPaginate = require("../functions.js")
+var {getLimitPaginate,getRelation} = require("../functions.js")
 var md5 = require("md5")
 
-
+//GET /offices
 router.get('/offices', (req, res) => {
     var sql = "select * from office  limit ?,?";
     var sqlCount = "select count(*) total from office";
@@ -37,7 +37,7 @@ router.get('/offices', (req, res) => {
     });
 });
 
-
+//GET /offices/<id>
 router.get('/offices/:id', (req, res) => {
 
     var sql = "select * from office  where id = ?"

@@ -4,7 +4,7 @@ var db = require("../database.js")
 var getLimitPaginate = require("../functions.js")
 var md5 = require("md5")
 
-
+//GET /departments
 router.get('/departments', (req, res) => {
     var sql = "select * from department  limit ?,?";
     var sqlCount = "select count(*) total from department";
@@ -37,7 +37,7 @@ router.get('/departments', (req, res) => {
     });
 });
 
-
+//GET /departments/<id>
 router.get('/departments/:id', (req, res) => {
 
     var sql = "select * from department  where id = ?"
