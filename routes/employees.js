@@ -10,25 +10,19 @@ router.get('/employees', (req, res) => {
     var sql = "select * from " + table ;
     var limit = " limit ?,? ";
     var join = " ";
-    var where = "where  1= 1";
+    var where = " where  1= 1";
    
     var sqlCount = "select count(*) total from " + table;
 
     //Rel
     //Relaciones
-    //join =getRelation(req,table);
-    sql = sql + join  + where + limit;
-    /*sql=JSON.stringify(sql);
-    sql = sql.replace(",","");
-    sql = sql.replace(",","");
-    sql = sql.replace(",","");
-    sql = sql.replace(",","");*/
+    join =getRelation(req,table);
 
-    //sqlCount=
-    console.log(sql);
+
+    join=join.join("");
+    sql = sql + join  + where + limit;
     let params = [];
     db.get(sqlCount, (err, row) => {
-
         total = row.total;
         if (total > 0) {
             //Obtener limites para paginado
@@ -39,13 +33,13 @@ router.get('/employees', (req, res) => {
                     res.status(400).json({ "error": err.message });
                     return;
                 }
-                res.json({
+                res.send({
                     "message": "success",
                     "data": rows
                 })
             });
         } else {
-            res.json({
+            res.send({
                 "message": "No rows",
                 "data": row.total
             })

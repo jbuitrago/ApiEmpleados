@@ -41,7 +41,7 @@ let getRelation =  function getRelation(req,table) {
 
     if (typeof req.query.rel !== 'undefined') {
         
-        if(eq.query.rel.length >1){
+ 
         join = req.query.rel.map((rel) => {
             var relation = rel.split(".");
             var joinTable = "";
@@ -59,18 +59,17 @@ let getRelation =  function getRelation(req,table) {
                 }else if(joinTable == "superdepartment"){
                     joinTableN = "department";
                     joinAlias = relation[i];
-                    //joinOn = joinTableN+ ".id" + " = "+ joinTableN + "." + joinAlias;
+                    joinOn = joinTableN+ ".id" + " = "+ joinTableN + "." + joinAlias;
                 }else{
                     joinAlias =joinTable;
                     joinOn = joinAlias + ".id" + " = " + table + "." + joinAlias;
+                    join = join + " join " + joinTable + " " + joinAlias  + " on " + joinOn;
                }
-                 join = join + " join " + joinTable + " " + joinAlias  + " on " + joinOn;
-                 return join;
+                 
              }
-  
+             return join;
         });
-        }
-
+    
     }
 
     return join;
